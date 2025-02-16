@@ -206,7 +206,7 @@ Faucet-Pool Balances: <a href='https://wax.bloks.io/account/cheesefaucet' target
 </div>
 
   
-<div style='float:right;margin-right:20px;'><small>V.0.0.3</small></div>
+<div style='float:right;margin-right:20px;'><small>V.0.0.4</small></div>
 <br>
 <br>
 <br> 
@@ -590,6 +590,15 @@ if (value.rows.length == 0)
 
 
 
+if (unstakingactive == 1)
+   {
+   message = "<span style='color:#aa0000;font-weight:bold;'>(unstaking)</span>";
+
+   document.getElementById('yourstakeinfo').innerHTML = message;
+   return;
+   }
+
+
 console.log("load cheese user:");
 
 console.log( value );
@@ -640,9 +649,11 @@ restcnt = (60*60*24*3) - (utcTimestampSeconds - unstaketime);
 if (restcnt > 0 && unstaketime > 0)
    {
    document.getElementById('unstakingcounter').innerHTML = " Refund is possible in " + restcnt + " seconds";
+   unstakingactive = 1;
    } else
-     {
+     {     
      document.getElementById('unstakingcounter').innerHTML = "";
+     unstakingactive = 0;
      } 
 
 
@@ -761,10 +772,10 @@ getdata(callback_render_contractbalance, "membershipfe", "membershipfe",  "depos
 
 
 // 
+var unstakingactive = 0;
 
 function callback_render_loadnodeuserplus( value )
 {
-// alfalf
 
 document.getElementById('plusstatus').innerHTML = "";
 
