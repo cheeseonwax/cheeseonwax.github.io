@@ -147,6 +147,7 @@
  <br>
  Balance Cheese : <span id='balancecheese'>...</span> <br>
  CHEESE staked: <span id='balancecheesestaked'>...</span>  <span id='yourstakeinfo' style=''></span> <br>
+ <span id='plusstatus'></span><br>
  <br>
  Stake Cheese: <input type='text' id='cheesetostake' placeholder='100.0000'> <span onclick='stakecheesenow()'class='stakebutton' style=''>&nbsp; Stake &nbsp;</span><br>
 
@@ -205,7 +206,7 @@ Faucet-Pool Balances: <a href='https://wax.bloks.io/account/cheesefaucet' target
 </div>
 
   
-<div style='float:right;margin-right:20px;'><small>V.0.0.2</small></div>
+<div style='float:right;margin-right:20px;'><small>V.0.0.3</small></div>
 <br>
 <br>
 <br> 
@@ -739,23 +740,7 @@ document.getElementById('faucetdiv').innerHTML = buffer;
 
 function loadnode_user()
 {
-
-/*
- staketable_s my_staketable( name("sovdexpaydiv") , name("sovdexpaydiv") .value );  
-      	 
-	  auto itr = my_staketable.find( user.value );
-      check( itr != my_staketable.end(), "No SVX node"  );
-
-      uint64_t balance = itr->svxstaked.amount;
-      eosio::print("SVX Balance is ",balance," * ",itr->svxstaked," ");
-      
-      int nodes = (balance / 10000) / 777000;
-      eosio::print(" nodes: ",nodes," ");
-      
-      
-*/
-// alfalf
-//uint64var =   eosjsName.nameToUint64( global_account + "" );
+ 
 
 console.log("load USER: " + global_account   );
 getdata(callback_render_loadnodeuser, "cheesecheese", "cheesecheese", "staketable", global_account, "", "", 1 );
@@ -773,6 +758,77 @@ getdata(callback_render_contractbalance, "membershipfe", "membershipfe",  "depos
 */
 } // loadnode_user
 
+
+
+// 
+
+function callback_render_loadnodeuserplus( value )
+{
+// alfalf
+
+document.getElementById('plusstatus').innerHTML = "";
+
+
+//document.getElementById('plusstatus').innerHTML = "PLUS.....";
+
+
+
+
+if ( !value ) return;
+if (value.rows.length == 0) 
+   {
+    
+   document.getElementById('plusstatus').innerHTML = "";
+   return;   
+   }
+
+
+
+console.log("load cheese user:");
+
+console.log( value );
+
+theuser = value.rows[0].user;
+console.log("theuser:" + theuser);
+
+if (global_account == "") return;
+if (theuser != global_account) return;
+                
+                
+                
+plusnodes = value.rows[0].plusnodes;
+
+if (plusnodes != "")
+   {
+   var percent = plusnodes * 10;
+   document.getElementById('plusstatus').innerHTML = "VIP Bonus: " + percent + "%";
+   } else
+     {
+     document.getElementById('plusstatus').innerHTML = "";
+     }
+
+
+/*
+
+
+   message = "<span style='color:#aa0000;font-weight:bold;'>&#10007;</span>";
+
+document.getElementById('yourstakeinfo').innerHTML = message;
+ 
+
+ */
+                               
+} // callback_render_loadnodeuserplus
+
+
+
+
+function loadnode_user_plus()
+{
+  
+getdata(callback_render_loadnodeuserplus, "cheesefaucet", "cheesefaucet", "plusnode", global_account, "", "", 1 );
+
+} // loadnode_user_plus
 
 
 
@@ -1411,8 +1467,12 @@ function update_thread()
 {
 console.log("THREAD");
 
-if ( (cnt % 5) == 0 ) loadfaucet_user()
-if ( (cnt % 5) == 0 ) loadnode_user()
+if ( (cnt % 5) == 0  ) loadfaucet_user();
+if ( (cnt % 5) == 0  ) loadnode_user();
+
+if ( (cnt % 15) == 0 ) loadnode_user_plus();
+
+
 
 /*
 getsovsupply();
@@ -1450,6 +1510,7 @@ init_wallets( "cheesefaucet",setaccountname, logoutall );
 update_thread(); 
 
 loadfaucet();
+loadnode_user_plus();
 get_faucet_information();
 
 </script>
