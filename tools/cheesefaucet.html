@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="img/icon.png?t=34" />
+<link rel="stylesheet" href="css/style.css?ttd=4434244" />
+
+ <!-- BEGINN WALLET-INCLUDE-->
+    
+    <!-- Cloud Wallet js -->
+   <script src='js/wax/waxjs.js' crossorigin="anonymous"></script>   
+
+    
+    <!-- Anchor js -->
+    <script src="https://unpkg.com/anchor-link@next"></script>
+    <script src="https://unpkg.com/anchor-link-browser-transport@next"></script>
+        
+    <!-- Scatter js -->
+    <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/eos.min.js"></script>  
+
+    <script src="js/bundles/scatterjs-core.min.js"></script>
+    <script src="js/bundles/scatterjs-plugin-eosjs.min.js"></script>
+    <script src="js/bundles/scatterjs-plugin-lynx.min.js"></script>    
+    
+    <script src="js/eosiowallet/wallet.js?dsd=79524" crossorigin="anonymous"></script>   
+    
+    <script src="js/eosjs-account-name_2.2.1.js"></script>  
+   
+ 
+              
+ <!-- END WALLET-INCLUDE-->
+
+
+
+</head>
+
+<body class='bodyclass'>
+ 
+  <div id='logo1' class='logo1x' style='text-align:center;'>
+  <img src='img/cheese_cheeseburger.png?t=d453s' style='margin-top:30px;height:60px;'><br>
+  CHEESE-FAUCET<br>
+  <br>
+  </div>
+
+
+
+<!-- walletmenu -->
+
+<div id='walletmenu' class='walletmenu' style='width:100%;text-align:left;height:90px;float:left;text-align:center;position:relative;overflow:hidden;'>
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ <div id='walletmenu_anchor' style='float:left;margin-top:20px;margin-left:6%;overflow:hidden;'>
+ <div id='anchorbutton' onclick="login_anchor()" class='loginbutton_anchor noselect' style='margin-left:auto;margin-right:auto;' >ANCHOR</div> 
+  </div>
+
+
+  <div id='walletmenu_wcw' style='float:left;margin-top:20px;margin-left:20px;overflow:hidden;'>
+  <div onclick="login_wcw()" class='defaultbutton noselect' style='margin-left:auto;margin-right:auto;'  >Wax Cloud Wallet</div>
+  </div>
+
+
+
+  <div id='walletmenu_scatter' style='float:left;margin-top:20px;margin-left:20px;overflow:hidden;'>
+ <div onclick="login_scatter()" class='defaultbutton noselect' style='margin-left:auto;margin-right:auto;'  >SCATTER/TP/WOMBAT</div>
+  </div>
+
+
+<div style='clear:both;'></div>
+
+
+
+ 
+ 
+ <div id='walletmenu_accountname' style='float:left;margin-left:6%;visibility:hidden;overflow:hidden;'>
+ 
+ <div id='myaccountname' class='myaccountname' style='font-size:2em;color:#db7f00;font-weight:bold;'>...</div> 
+ </div>
+  
+ 
+
+
+
+
+
+
+
+  
+  
+ 
+  <div id='walletmenu_aa' style='float:left;;margin-left:20px;'>  
+  <div id='logoutbutton' onclick="logout_all()"  class='defaultbutton noselect' style='visibility:hidden;margin-left:auto;margin-right:auto;' >Logout</div>
+  </div>
+
+ 
+
+
+
+ 
+ 
+
+<div style='clear:both;'></div>
+
+
+
+
+</div> <!-- end walletmenu -->
+
+
+
+<div id='menu' class='noselect' style='width:margin-left:auto;margin-right:auto;padding:5px; float:left;'>
+&nbsp;<a href='https://cheeseonwax.github.io/' class='menufont' style=''>START</a> | <a href='faucet.html' class='menufont' style=''>FAUCET</a>   | <span id='openstakewalletmenu' class='menufont' style='' onclick='openstakewallet()'>STAKE &#x2207;</span> 
+</div>
+
+<div style='clear:both;'></div>
+ 
+<br>
+
+
+<div id='walletdiv' class='walletdiv' style='visibility:hidden;height:0px;'> 
+
+<!--
+<div id='walletdiv' class='walletdiv' style=''>
+-->
+ <div id='walletdivinnder' class='' style='margin:10px;'>
+ <strong>Stake-Menu</strong><br>
+ <small>(You must stake at least <span id='freeclaimamount'>...</span> CHEESE to use the faucet.)</small>
+ <br>
+ 
+ <br>
+ Balance Cheese : <span id='balancecheese'>...</span> <br>
+ CHEESE staked: <span id='balancecheesestaked'>...</span>  <span id='yourstakeinfo' style=''></span> <br>
+ <br>
+ Stake Cheese: <input type='text' id='cheesetostake' placeholder='100.0000'> <span onclick='stakecheesenow()'class='stakebutton' style=''>&nbsp; Stake &nbsp;</span><br>
+
+ <br>
+ <span onclick='unstakecheesenow()' style='' class='stakebutton'>&nbsp; Unstake ** &nbsp;</span> &nbsp;&nbsp;&nbsp;
+ <span onclick='refundcheesenow()' style='' class='stakebutton'>&nbsp; Refund &nbsp;</span> 
+ <small><span id='unstakingcounter'></span></small> 
+
+ <br>
+ <br>
+ 
+ 
+ <small>* You can increase your existing stake. Please note, <em>staking</em> means sending the tokens to the <strong>cheesecheese</strong> contract. Every staking action will reset an unstaking-counter.</small> <br>
+ <br>
+ <small>** Only all tokens can be unstaked at once. Unstaking takes 72 hours. </small><br>
+  
+ </div> <!-- walletdivinner -->
+
+</div> <!-- walletdiv -->
+
+<div id='infotext' style='margin-left:auto;margin-right:auto;width:90%;border:none;'>
+<h1>CHEESE Community Faucet</h1>
+	
+🧀 Stake some Cheese and get a daily claim 🧀.
+ 
+
+</div> <!-- infotext -->
+<br>
+<br>
+
+<div style='text-align:center;'>
+
+
+<div id='faucetdiv' style='margin-left:auto;margin-right:auto;width:90%;border:none;'>
+</div>
+
+<div id='faucetdiv_user' style='margin-left:auto;margin-right:auto;width:90%;border:none;text-align:left;font-size:20px;'> 
+</div>
+
+
+
+ 
+
+</div> <!-- center -->
+
+
+<br>
+<br>
+
+
+<div class='separator'>&nbsp;</div>
+<div style='margin-left:auto;margin-right:auto;width:90%;text-align:left;'>
+<h3>Links</h3>
+
+Faucet-Pool Balances: <a href='https://wax.bloks.io/account/cheesefaucet' target='_blank' style='color:#444444;'>cheesefaucet</a>
+</div>
+
+  
+<div style='float:right;margin-right:20px;'><small>V.0.0.1</small></div>
+<br>
+<br>
+<br> 
+
+
+<script>
+var id = 10;
+var tokenid = 12;
+var price = 1;
+var user = "sovdex"
+  var row2 = { 0:id,1:tokenid,2:price,3:user,4:1.3,5:6 };
+      
+   
+       console.log("row:");
+       console.log(row2);
+ 
+ 
+ 
+ 
+function setaccountname( name )
+{
+document.getElementById('myaccountname').innerHTML = ""+name+"";
+
+
+document.getElementById('walletmenu_accountname').style.visibility = "visible";
+document.getElementById('walletmenu_accountname').style.width = ""; 
+document.getElementById('walletmenu_accountname').style.height = "";
+
+
+document.getElementById('walletmenu_anchor').style.visibility = "hidden";
+document.getElementById('walletmenu_anchor').style.width = "0px"; 
+document.getElementById('walletmenu_anchor').style.height = "0px";
+
+document.getElementById('walletmenu_scatter').style.visibility = "hidden";
+document.getElementById('walletmenu_scatter').style.width = "0px"; 
+document.getElementById('walletmenu_scatter').style.height = "0px"; 
+
+document.getElementById('walletmenu_wcw').style.visibility = "hidden";
+document.getElementById('walletmenu_wcw').style.width = "0px"; 
+document.getElementById('walletmenu_wcw').style.height = "0px"; 
+
+document.getElementById('logoutbutton').style.visibility = "visible";
+document.getElementById('logoutbutton').style.width = ""; 
+document.getElementById('logoutbutton').style.height = ""; 
+
+}
+
+
+
+function logoutall( name )
+{
+document.getElementById('myaccountname').innerHTML = "";
+document.getElementById('myaccountname').style.width = "";
+
+document.getElementById('walletmenu_accountname').style.visibility = "hidden";
+document.getElementById('walletmenu_accountname').style.width = "0px"; 
+document.getElementById('walletmenu_accountname').style.height = "0px";
+
+
+document.getElementById('walletmenu_anchor').style.visibility = "visible";
+document.getElementById('walletmenu_anchor').style.width = ""; 
+document.getElementById('walletmenu_anchor').style.height = "";
+
+document.getElementById('walletmenu_scatter').style.visibility = "visible";
+document.getElementById('walletmenu_scatter').style.width = ""; 
+document.getElementById('walletmenu_scatter').style.height = "";
+
+document.getElementById('walletmenu_wcw').style.visibility = "visible";
+document.getElementById('walletmenu_wcw').style.width = ""; 
+document.getElementById('walletmenu_wcw').style.height = "";
+
+ 
+document.getElementById('logoutbutton').style.visibility = "hidden";
+document.getElementById('logoutbutton').style.width = "0px";
+document.getElementById('logoutbutton').style.height = "0px";
+}
+
+
+
+function external_login_action()
+{
+update_counter = 0;
+}
+
+function func_success( message )
+{
+alert(message);
+}
+
+function func_error( message )
+{
+alert(message);
+}
+
+
+
+
+function callback_render_loadfaucet( value )
+{
+
+if (value.rows.length == 0) return;   
+
+/*
+                
+balance = value.rows[0].balance;
+ 
+buffer = "" + balance;
+last_balance1 = balance;
+*/
+
+buffer = "";
+
+size = value.rows.length;
+console.log("size: ",size);
+//buffer += "size: " + size;
+
+
+
+// sort array
+var thearray = new Array();
+
+for (var i=0; i<size; i++)
+    {
+    thearray[i] = new Object();
+    thearray[i]['index'] = i;
+    thearray[i]['order'] = value.rows[i].order;    
+    } // for i..size
+
+
+console.log("PRE");
+console.log( thearray );
+
+// sort
+
+var SORT = 1;
+while (SORT == 1)
+{
+SORT = 0;
+
+for (var i=0; i<size-1; i++)
+    {
+//    thearray[i] = new Object();
+
+    if ( thearray[i]['order'] > thearray[i+1]['order'] )
+       {
+       o_index = thearray[i]['index'];
+       o_order = thearray[i]['order'];    
+
+       thearray[i]['index'] = thearray[i+1]['index'];
+       thearray[i]['order'] = thearray[i+1]['order'];
+    
+       thearray[i+1]['index'] = o_index;
+       thearray[i+1]['order'] = o_order;
+       SORT = 1;
+       } // 
+       
+    } // for i..size
+    
+} // while (SORT)
+
+console.log("AFTER");
+console.log( thearray );
+
+
+
+for (var i=0; i<size; i++)
+    {
+    var i2 = thearray[i]['index'];
+    
+    tokenid      = value.rows[i2].id;
+    payout       = value.rows[i2].payout;
+    contract     = value.rows[i2].contract;
+    description  = value.rows[i2].description;
+    noderequired = value.rows[i2].noderequired;
+    
+    
+    
+    if (description != "powerupx")
+    {
+    
+    claimbutton = "";
+    claimbutton += "<div onclick='claimtoken("+tokenid+")' class='claimtokenbutton'>";
+    claimbutton += "CLAIM";
+    
+    claimbutton += "</div>";
+    
+    
+    if (description != "powerup")
+    buffer += "<div style='border:none;margin:5px;height:60px;' class='claimarea'>"; else
+    {
+    buffer += "<div style='border:none;margin:5px;height:60px;background:#aa33aa;' class='claimarea'>"; 
+    description = "PowerUp Claim - EOS will be used for account PowerUp";
+    }
+  
+    //
+    // Logo
+    //
+
+    logoimg = removenumbersandpoint(payout);
+    logoimg = 'logo/' + logoimg.toLowerCase() + '_' + contract + '.png';
+ /*
+ svx_svxmintofeos.png
+ */   
+      buffer +=   "<div style='float:left;width:5%;border:none;font-size:30px;margin-left:2%;margin-top:12px;'>";
+
+     // if ( imgexist( logoimg ) )
+         buffer +=   "<img src='"+logoimg+"' style='width:37px;'>" ; 
+         //else
+//         buffer +=   "&nbsp;" ;
+         
+//         buffer += logoimg;  
+         
+      buffer +=   "</div>"; 
+
+ 
+ 
+    /*
+    buffer +=   "<div style='float:left;width:10%;border:1px solid #ffff00;'>";
+  buffer += " id:"+ tokenid + " ";
+    buffer +=   "</div>";
+  */
+      buffer +=   "<div style='float:left;width:25%;border:none;font-size:30px;margin-top:15px;'>";
+ buffer +=  contract ;
+    if (noderequired == 0) 
+       {
+       buffer += "<br><div style='font-size:8px;'>Free - No SVX-node required</div>";
+       }
+    buffer +=   "</div>";
+  
+    buffer +=   "<div style='float:left;width:20%;border:none;font-size:15px;margin-top:15px;'>";
+    buffer += description ;
+    buffer +=   "</div>";
+    
+        buffer +=   "<div style='float:left;width:29%;border:none;font-size:25px;text-align:right;margin-top:15px;'>";
+    buffer +=    payout ;
+    buffer +=   "</div>";
+     
+      
+    
+        buffer +=   "<div style='float:left;width:15%;border:none;margin-top:10px;'>";
+    buffer +=   claimbutton + " ";
+    buffer +=   "</div>";    
+            
+    buffer += "</div>";
+    
+    
+ 
+     buffer += "<div style='clear:both'></div>";
+
+
+    } // if (description != "powerup")
+ 
+
+    } // for i...
+
+document.getElementById('faucetdiv').innerHTML = buffer;
+                               
+} // callback_render_loadfaucet
+
+
+ 
+
+function loadfaucet()
+{
+getdata(callback_render_loadfaucet, "cheesefaucet", "cheesefaucet", "claimtoken", "", "", "", 1102 );
+} // loadfaucet
+
+
+
+
+// get faucet information
+
+ 
+var globalfreeclaim = "";
+
+function callback_render_get_faucet_information( value )
+{
+
+
+console.log("call render faucet info 1 ");
+
+
+
+if ( !value ) return;
+if (value.rows.length == 0) 
+   {
+    
+   document.getElementById('freeclaimamount').innerHTML = "";
+   return;   
+   }
+
+console.log("call render faucet info 2");
+
+ 
+
+console.log( value );
+
+ 
+                
+                
+                
+freeclaim = value.rows[0].freeclaim;
+
+
+freeclaimformat = freeclaim;
+var freeclaimformat = freeclaim / 10000;
+globalfreeclaim = freeclaimformat;
+
+freeclaimformat = Number(freeclaimformat).toFixed(4) + "";   
+
+
+// 
+
+document.getElementById('freeclaimamount').innerHTML = freeclaimformat;
+
+
+/*
+unstaketime  = value.rows[0].unstaketime;
+
+document.getElementById('balancecheesestaked').innerHTML = cheesestaked;
+
+
+const utcTimestampSeconds = Math.floor(Date.now() / 1000);
+console.log(utcTimestampSeconds);
+
+restcnt = (60*60*24*3) - (utcTimestampSeconds - unstaketime);
+
+if (restcnt > 0 && unstaketime > 0)
+   {
+   document.getElementById('unstakingcounter').innerHTML = " Refund is possible in " + restcnt + " seconds";
+   } else
+     {
+     document.getElementById('unstakingcounter').innerHTML = "";
+     } 
+
+
+
+  
+
+
+*/
+  
+                               
+} // callback_render_get_faucet_information
+
+
+
+
+ 
+
+
+function get_faucet_information()
+{
+
+ //alert("get faucet info");
+
+getdata(callback_render_get_faucet_information, "cheesefaucet", "cheesefaucet", "global", 0, "", "", 2 );
+} // get_faucet_information
+
+
+// END - get faucet information
+
+
+
+var usernodes = 0;
+
+
+function callback_render_loadnodeuser( value )
+{
+
+document.getElementById('balancecheesestaked').innerHTML = "";
+
+
+if ( !value ) return;
+if (value.rows.length == 0) 
+   {
+    
+   document.getElementById('balancecheesestaked').innerHTML = "";
+   return;   
+   }
+
+
+
+console.log("load cheese user:");
+
+console.log( value );
+
+staker = value.rows[0].staker;
+console.log("staker:" + staker);
+
+
+   message = "<span style='color:#aa0000;font-weight:bold;'>&#10007;</span>";
+
+document.getElementById('yourstakeinfo').innerHTML = message;
+
+if (global_account == "") return;
+if (staker != global_account) return;
+                
+                
+                
+cheesestaked = value.rows[0].cheesestaked;
+unstaketime  = value.rows[0].unstaketime;
+
+
+cheesestakednumber = cheesestaked;
+cheesestakednumber = cheesestaked.replace("CHEESE ", "");
+cheesestakednumber = parseFloat (cheesestakednumber); 
+ 
+
+
+/*
+yourstakeinfo 
+*/
+message = "";
+if (cheesestakednumber >= globalfreeclaim) message = "<span style='color:#00aa00;font-weight:bold;'>&#10004;</span>"; else
+   message = "<span style='color:#aa0000;font-weight:bold;'>&#10007;</span>";
+
+document.getElementById('yourstakeinfo').innerHTML = message;
+console.log(">>> cheesestakednumber " + cheesestakednumber);
+console.log(">>> globalfreeclaim " + globalfreeclaim);
+
+
+document.getElementById('balancecheesestaked').innerHTML = cheesestaked;
+
+
+const utcTimestampSeconds = Math.floor(Date.now() / 1000);
+console.log(utcTimestampSeconds);
+
+restcnt = (60*60*24*3) - (utcTimestampSeconds - unstaketime);
+
+if (restcnt > 0 && unstaketime > 0)
+   {
+   document.getElementById('unstakingcounter').innerHTML = " Refund is possible in " + restcnt + " seconds";
+   } else
+     {
+     document.getElementById('unstakingcounter').innerHTML = "";
+     } 
+
+
+
+/*
+// balancecheese
+
+balance = svxstaked.replace("SVX", "");
+balance2 = parseFloat (balance); 
+svxstaked = balance2;
+
+
+usernodes = parseInt( svxstaked / 777000 );
+
+
+console.log("svxstaked:" + svxstaked + " usernodes:" + usernodes);
+*/
+
+
+return;
+
+
+
+/*
+                
+balance = value.rows[0].balance;
+ 
+buffer = "" + balance;
+last_balance1 = balance;
+*/
+
+buffer = "";
+
+size = value.rows.length;
+console.log("size: ",size);
+//buffer += "size: " + size;
+
+for (var i=0; i<size; i++)
+    {
+    
+    tokenid = value.rows[i].id;
+    payout = value.rows[i].payout;
+    contract = value.rows[i].contract;
+    description = value.rows[i].description;
+    
+    claimbutton = "";
+    claimbutton += "<div onclick='claimtoken("+tokenid+")' class='claimtokenbutton'>";
+    claimbutton += "CLAIM";
+    
+    claimbutton += "</div>";
+    
+    buffer += "<div style='border:none;margin:5px;height:60px;' class='claimarea'>";
+  
+    
+ 
+ 
+    /*
+    buffer +=   "<div style='float:left;width:10%;border:1px solid #ffff00;'>";
+  buffer += " id:"+ tokenid + " ";
+    buffer +=   "</div>";
+  */
+      buffer +=   "<div style='float:left;width:30%;border:none;font-size:30px;margin-top:15px;'>";
+ buffer +=  contract ;
+    buffer +=   "</div>";
+  
+    buffer +=   "<div style='float:left;width:30%;border:none;font-size:15px;margin-top:15px;'>";
+    buffer += description ;
+    buffer +=   "</div>";
+    
+        buffer +=   "<div style='float:left;width:25%;border:none;font-size:30px;text-align:left;margin-top:15px;'>";
+    buffer +=    payout ;
+    buffer +=   "</div>";
+     
+      
+    
+        buffer +=   "<div style='float:left;width:15%;border:none;margin-top:10px;'>";
+    buffer +=   claimbutton + " ";
+    buffer +=   "</div>";    
+            
+    buffer += "</div>";
+    
+    
+ 
+     buffer += "<div style='clear:both'></div>";
+
+
+    } // for i...
+
+document.getElementById('faucetdiv').innerHTML = buffer;
+                               
+} // callback_render_loadnodeuser
+
+
+
+
+function loadnode_user()
+{
+
+/*
+ staketable_s my_staketable( name("sovdexpaydiv") , name("sovdexpaydiv") .value );  
+      	 
+	  auto itr = my_staketable.find( user.value );
+      check( itr != my_staketable.end(), "No SVX node"  );
+
+      uint64_t balance = itr->svxstaked.amount;
+      eosio::print("SVX Balance is ",balance," * ",itr->svxstaked," ");
+      
+      int nodes = (balance / 10000) / 777000;
+      eosio::print(" nodes: ",nodes," ");
+      
+      
+*/
+// alfalf
+//uint64var =   eosjsName.nameToUint64( global_account + "" );
+
+console.log("load USER: " + global_account   );
+getdata(callback_render_loadnodeuser, "cheesecheese", "cheesecheese", "staketable", global_account, "", "", 1 );
+
+//getdata(callback_render_loadnodeuser, "cheesecheese", "cheesecheese", "staketable", uint64var, 0, "i64", 1 );
+
+/*
+uint64var =   eosjsName.nameToUint64( global_account + "" );
+console.log(uint64var);
+//alert("test getdata");
+//  "key_type": "i64"
+//getdata(callback_render_contractbalance, "membershipfe", "membershipfe",  "deposits" ,"7287559103894367888", "", "", 1112 );
+getdata(callback_render_contractbalance, "membershipfe", "membershipfe",  "deposits" ,uint64var, 1, "i64", 1112 );
+
+*/
+} // loadnode_user
+
+
+
+
+
+function callback_render_loadfaucetuser( value )
+{
+console.log("USER...");
+console.log( value );
+
+if (value.rows.length == 0) return;   
+
+if (global_account == "") return;
+if (value.rows[0].user != global_account) return;
+
+
+/*
+ last_zero_ts
+: 
+1673049600
+*/               
+ 
+ /*
+now = gettimestamp();
+var ts_last =    ( now / (24*60*60) ) * (24*60*60);
+ 
+ 
+ */
+claimstoday  = value.rows[0].claimstoday;
+
+/*
+last_zero_ts = value.rows[0].last_zero_ts;
+
+*/
+/* 
+buffer = "" + balance;
+last_balance1 = balance;
+*/
+
+buffer = "";
+
+//buffer += "  ("+ts_last+")    ("+last_zero_ts+") ";
+
+if (usernodes > 0)
+{
+
+if (usernodes == 1)
+   {
+   buffer += "You can claim 1 time a day";
+   } else
+     {
+     buffer += "You can claim "  + usernodes + " times a day";
+     } 
+//if (claimstoday
+}
+ 
+/*
+size = value.rows.length;
+console.log("size: ",size);
+//buffer += "size: " + size;
+
+for (var i=0; i<size; i++)
+    {
+    
+    tokenid = value.rows[i].id;
+    payout = value.rows[i].payout;
+    contract = value.rows[i].contract;
+    description = value.rows[i].description;
+    
+    claimbutton = "";
+    claimbutton += "<div onclick='claimtoken("+tokenid+")' class='claimtokenbutton'>";
+    claimbutton += "CLAIM";
+    
+    claimbutton += "</div>";
+    
+    buffer += "<div style='border:none;margin:5px;height:60px;' class='claimarea'>";
+  
+    
+ 
+  
+      buffer +=   "<div style='float:left;width:30%;border:none;font-size:30px;margin-top:15px;'>";
+ buffer +=  contract ;
+    buffer +=   "</div>";
+  
+    buffer +=   "<div style='float:left;width:30%;border:none;font-size:15px;margin-top:15px;'>";
+    buffer += description ;
+    buffer +=   "</div>";
+    
+        buffer +=   "<div style='float:left;width:25%;border:none;font-size:30px;text-align:left;margin-top:15px;'>";
+    buffer +=    payout ;
+    buffer +=   "</div>";
+     
+      
+    
+        buffer +=   "<div style='float:left;width:15%;border:none;margin-top:10px;'>";
+    buffer +=   claimbutton + " ";
+    buffer +=   "</div>";    
+            
+    buffer += "</div>";
+    
+    
+ 
+     buffer += "<div style='clear:both'></div>";
+
+
+    } // for i...
+    
+    */
+
+document.getElementById('faucetdiv_user').innerHTML = buffer;
+                               
+} // callback_render_loadfaucetuser
+
+
+function removenumbersandpoint(text) {
+  var newtext = text.replace(/[0-9. ]/g, '');
+  return newtext;
+}
+
+function imgexist(path) {
+  var theimg = new Image();
+  theimg.src = path;
+
+  return theimg.complete || theimg.height !== 0;
+}
+
+
+function gettimestamp()
+{
+ret = Math.floor(Date.now() /1000);
+
+return(ret);
+} // gettimestamp
+
+
+function loadfaucet_user()
+{
+//console.log("load...user");
+// getdata(callback_render_balance1, "eosio.token", global_account, "accounts", "", "", "", 112 );
+// getdata(callback_render_balance2, "sovmintofeos", global_account, "accounts", "", "", "", 112 );
+//   function getdata( callback, _code, _scope, _table, _lower, _index, _key_type, _limit )
+//  "index_position":2 , "key_type": "i64",  "json":true } );
+
+ getdata(callback_render_loadfaucetuser, "cheesefaucet", "cheesefaucet", "nodes", global_account, "", "", 1 );
+} // loadfaucet_user
+
+
+
+function claimtoken( tokenid )
+{
+
+multiplier = 1;
+//multiplier = document.getElementById('multiplier').value * 1;
+
+//alert("multiplier: " + multiplier);
+
+
+var theactions = [];
+
+memo = "This is it";
+
+ 
+    
+   
+    var action = {
+                 account: "cheesefaucet",
+                 name: 'claim',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "user": global_account,
+                       "tokenid": tokenid,                   
+                       }
+                 };
+
+ for (var i=0; i<multiplier; i++)
+     {
+     theactions.push(action);
+     }
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+} // claimtoken
+
+
+/*
+faucetdiv_user
+*/
+
+
+function testtransaction()
+{
+
+var theactions = [];
+
+memo = "This is it";
+
+
+    
+   
+    var action = {
+                 account: "eosio.token",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "testtesttest",
+                       "quantity": "0.0001 EOS",
+                       "memo": memo
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+}
+
+ 
+
+
+ 
+
+
+
+
+function savesvxbalance()
+{
+var theactions = [];
+
+   
+    var action = {
+                 account: "sovpowerpack",
+                 name: 'savesvxbal',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "user": global_account
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+}
+
+
+
+function callback_render_balance1( value )
+{
+
+if (value.rows.length == 0) return;                   
+balance = value.rows[0].balance;
+ 
+buffer = "" + balance;
+last_balance1 = balance;
+document.getElementById('balance1').innerHTML = buffer;
+                               
+} // callback_render_balance1
+
+
+
+function getbalancedata()
+{
+getdata(callback_render_balance1, "eosio.token", global_account, "accounts", "", "", "", 112 );
+}
+
+
+
+
+
+
+
+// sov balance
+
+function callback_render_balance2( value )
+{
+
+if (value.rows.length == 0) return;                   
+balance = value.rows[0].balance;
+ 
+buffer = "" + balance;
+last_balance1 = balance;
+document.getElementById('balance3').innerHTML = buffer;
+                               
+} // callback_render_balance1
+
+
+
+function getsovbalancedata()
+{
+getdata(callback_render_balance2, "sovmintofeos", global_account, "accounts", "", "", "", 112 );
+}
+
+
+
+
+
+
+
+var lastsavedsvxbalance = 0;
+
+function callback_render_savedsvxbalance( value )
+{
+if (value.rows.length == 0) return;                   
+
+
+if (value.rows[0].user == global_account)
+{
+balance = value.rows[0].quantity;
+ 
+buffer = "" + balance;
+document.getElementById('svxbalancesaved').innerHTML = buffer;
+
+
+
+
+  balance2 = balance.replace("SOV", "");
+   balance2 = parseFloat (balance); 
+lastsavedsvxbalance = balance2;
+
+
+} else
+  {
+  document.getElementById('svxbalancesaved').innerHTML = "no data";
+  }
+                                 
+} // callback_render_balance1
+
+
+
+
+function getsvxbalance()
+{ 
+if (global_account == "") return;
+ 
+
+ 
+uint64var =   eosjsName.nameToUint64( global_account + "" );
+console.log(uint64var);
+
+
+
+getdata(callback_render_savedsvxbalance, "sovpowerpack", "sovpowerpack", "svxbalance", uint64var, "", "", 112 );
+}
+
+
+
+
+
+
+
+var first_sov_supply = "";
+var sovburneddiff    = "";
+// 
+
+/*
+function callback_render_sovsupply( value )
+{
+
+console.log("value sovsupply");
+console.log(value);
+
+ 
+if (value.rows.length == 0) return;                   
+
+
+
+supply = value.rows[0].supply;
+ 
+
+// Calc diff
+var supply2 = supply.replace("SOV", "");
+supply2 = parseFloat (supply2);
+   
+sovburneddiff = first_sov_supply - supply2 ;
+if (sovburneddiff <= 0) sovburneddiff = 0;
+
+sovburneddiff = Number(sovburneddiff).toFixed(4);
+
+ 
+ 
+
+buffer = sovburneddiff;
+document.getElementById('sovburn').innerHTML = buffer + " SOV";
+
+if ( first_sov_supply == "" )
+   {   
+   supply = supply.replace("SOV", "");
+   supply = parseFloat (supply);
+   first_sov_supply = supply;
+   }
+                              
+} // callback_render_sovsupply
+
+
+
+function getsovsupply()
+{
+getdata(callback_render_sovsupply, "sovmintofeos", "SOV", "stat", "", "", "", 112 );
+}
+*/
+
+
+
+function callback_render_cheesebalance( value )
+{
+console.log("value callback_render_cheesebalance");
+console.log(value);
+
+ 
+document.getElementById('balancecheese').innerHTML = "";
+  
+if (value.rows.length == 0) return;                   
+
+balance = value.rows[0].balance;
+  
+  //  
+if (balance != undefined)
+   {
+   document.getElementById('balancecheese').innerHTML = balance + "";
+   
+   /*
+   // alf 
+   balance2 = balance.replace("SOV", "");
+   balance2 = parseFloat (balance); 
+   
+   if (lastsavedsvxbalance != undefined)
+      {
+      var difference = balance2 - lastsavedsvxbalance;
+      difference = Number(difference).toFixed(4);
+      
+      document.getElementById('svxbalancediff').innerHTML = "&#916; " + difference + " SVX";
+      }
+      */
+   }
+                              
+} // callback_render_sovsupply
+
+
+
+function getsvxbalance2()
+{
+getdata(callback_render_cheesebalance, "cheeseburger", global_account, "accounts", "", "", "", 112 );
+}
+
+
+
+// Cheesestake menu
+
+
+var openstatus = 0;
+
+function openstakewallet()
+{
+// openstakewalletmenu STAKE &#x2207;
+
+if (openstatus == 0)
+   {
+   document.getElementById('openstakewalletmenu').innerHTML = " STAKE &#x2206;";
+
+   document.getElementById('walletdiv').style.visibility = "visible";
+   document.getElementById('walletdiv').style.height = "";
+   
+   
+   openstatus = 1;
+   } else
+
+if (openstatus == 1)
+   {
+   document.getElementById('openstakewalletmenu').innerHTML = " STAKE &#x2207;";
+
+   document.getElementById('walletdiv').style.visibility = "hidden";
+   document.getElementById('walletdiv').style.height = "0px";
+
+   openstatus = 0;
+   }  
+
+getsvxbalance2();
+loadnode_user();   
+//alert("open..");
+} // openstakewallet()
+
+
+ 
+ 
+function stakecheesenow()
+{
+cheesetostake =    document.getElementById('cheesetostake').value;
+ 
+cheesetostake =  Number(cheesetostake).toFixed(4) + " CHEESE" ; 
+ 
+//alert("stake it " + cheesetostake);
+
+
+var theactions = [];
+
+memo = "stake";
+
+    var action = {
+                 account: "cheeseburger",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account + "",
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account + "",
+                       "to": "cheesecheese",
+                       "quantity": cheesetostake,
+                       "memo": memo
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+} // stakecheesenow()
+
+
+
+function unstakecheesenow()
+{
+ 
+
+var theactions = [];
+
+memo = "stake";
+
+    var action = {
+                 account: "cheesecheese",
+                 name: 'unstake',
+                 authorization: [{
+                                actor: global_account + "",
+                                permission: "active"
+                                }],
+                 data: {
+                       "myaccount": global_account + ""                      
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+   
+} // unstakecheesenow()
+
+
+function refundcheesenow()
+{
+
+
+var theactions = [];
+
+memo = "stake";
+
+    var action = {
+                 account: "cheesecheese",
+                 name: 'refund',
+                 authorization: [{
+                                actor: global_account + "",
+                                permission: "active"
+                                }],
+                 data: {
+                       "myaccount": global_account + ""                      
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+                 
+} // refundcheesenow()
+
+
+
+// END Cheesestakemenu
+
+
+var cnt = 0;
+function update_thread()
+{
+console.log("THREAD");
+
+if ( (cnt % 5) == 0 ) loadfaucet_user()
+if ( (cnt % 5) == 0 ) loadnode_user()
+
+/*
+getsovsupply();
+
+
+if ( (cnt % 2) == 0 ) getsvxbalance();
+if ( (cnt % 2) == 0 ) getsvxbalance2();
+
+if ( (cnt % 4) == 0 ) getbalancedata();
+
+if ( (cnt % 6) == 0 ) getsovbalancedata();
+
+
+ 
+console.log("first_sov_supply: " );
+console.log(first_sov_supply);
+
+console.log("sovburneddiff: " );
+console.log(sovburneddiff);
+*/
+cnt++; 
+var time = setTimeout("update_thread()", 3000);
+  
+} //// update_thread
+
+
+
+
+</script>
+
+
+<script>
+init_wallets( "cheesefaucet",setaccountname, logoutall );
+
+update_thread(); 
+
+loadfaucet();
+get_faucet_information();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+
+.test
+{
+color:#ff00ff;
+}
+
+
+
+.bodyclass
+{
+
+ 
+            background-color: #fff5cc;  
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+ 
+
+ 
+}
+
+.menufont
+{
+color:#333333;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+.menufont:hover
+{
+color:#aaaa99;
+}
+
+
+.noselect
+{
+ -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+ }
+ 
+
+
+
+
+.loginbutton_anchor
+{
+ 
+ 
+ 
+ 
+/* width:300px; */
+width:250px;
+
+/*background:#007bff;*/
+background:#db7f00;
+color:white;
+cursor:pointer;
+font-size:1.2em;
+
+letter-spacing: 0.2em;
+
+ -webkit-transition: all 0.2s ease-in-out;  
+ -moz-transition: all 0.2s ease-in-out;  
+ transition: all 0.2s ease-in-out;
+ 
+  -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:10px;
+    text-align:center;
+    
+    background-image: url('../img/anchor.svg?w4e9r');
+  background-repeat: no-repeat;
+  
+  background-position: right; 
+    background-size: 48px;
+    
+}
+
+ 
+.loginbutton_anchor:hover
+{
+background:#e8a814;
+
+
+    background-image: url('../img/anchor.svg?w48er');
+  background-repeat: no-repeat;
+  
+  background-position: right; 
+    background-size: 48px;
+}
+
+ 
+
+.defaultbutton
+{
+width:250px;
+/*border:1px solid #ff;*/
+/*background:#007bff;*/
+background:#db7f00;
+color:white;
+cursor:pointer;
+font-size:1.2em;
+
+ -webkit-transition: all 0.2s ease-in-out;  
+ -moz-transition: all 0.2s ease-in-out;  
+ transition: all 0.2s ease-in-out;
+ 
+  -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:10px;
+    text-align:center;
+    
+    
+}
+
+.defaultbutton:hover
+{
+background:#e8a814;
+
+  }
+
+
+
+.walletmenu
+{
+/*background:#7a8aff;*/
+ 
+    
+      background-color: #f4e5a1;  
+      
+      border-top: 4px solid #d4b672;
+      border-bottom: 4px solid #d4b672;
+}
+
+.separator
+{
+margin-left:auto;
+margin-right:auto;
+width:90%;
+border-bottom: 1px dashed #ffffff;
+}
+
+.minibutton
+{
+width:100px;
+border:1px solid #ffffff;
+background:#007bff;
+
+ 
+color:white;
+cursor:pointer;
+font-size:1.0em;
+
+ -webkit-transition: all 0.2s ease-in-out;  
+ -moz-transition: all 0.2s ease-in-out;  
+ transition: all 0.2s ease-in-out;
+ 
+  -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:5px;
+    text-align:center;
+    
+    margin-top:5px;
+    margin-left:auto;
+    margin-right:auto;    
+}
+
+.minibutton:hover
+{
+background:#0269d9;
+
+  }
+
+
+.claimtokenbutton
+{
+width:100px;
+border:1px solid #ffffff;
+/*background:#7b7bff;*/
+
+background:#db6900;
+
+color:white;
+cursor:pointer;
+font-size:1.0em;
+
+ -webkit-transition: all 0.2s ease-in-out;  
+ -moz-transition: all 0.2s ease-in-out;  
+ transition: all 0.2s ease-in-out;
+ 
+  -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:5px;
+    text-align:center;
+    
+    margin-top:5px;
+    margin-left:auto;
+    margin-right:auto;    
+}
+
+
+.claimtokenbutton:hover
+{
+background:#e8a814;
+}
+
+
+.stakebutton
+{
+width:100px;
+border:none;
+/*background:#7b7bff;*/
+
+background:#db6900;
+
+color:white;
+cursor:pointer;
+font-size:1.0em;
+
+ -webkit-transition: all 0.2s ease-in-out;  
+ -moz-transition: all 0.2s ease-in-out;  
+ transition: all 0.2s ease-in-out;
+ 
+  -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:5px;
+    text-align:center;
+    
+    margin-top:5px;
+    margin-left:auto;
+    margin-right:auto;  
+}
+
+
+
+.stakebutton:hover
+{
+background:#e8a814;
+}
+
+
+.claimarea
+{
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+/*background:#7a8aff;*/
+background:#db7f00;
+}
+  
+  
+  
+
+.imground
+{
+
+-webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+ 
+
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+
+
+.walletdiv
+{
+
+-webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+    border-radius: 10px;
+     
+      background-color: #f4e5a1;  
+      
+      border:  4px solid #d4b672;
+     
+text-align:left;
+
+width:90%;
+margin-left:auto
+;margin-right:auto;
+}
+
+  
