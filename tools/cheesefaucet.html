@@ -141,7 +141,8 @@
 -->
  <div id='walletdivinnder' class='' style='margin:10px;'>
  <strong>Stake-Menu</strong><br>
- <small>(You must stake at least <span id='freeclaimamount'>...</span> CHEESE to use the faucet.)</small>
+ <small>(You must stake at least <span id='freeclaimamount'>...</span> CHEESE to use the faucet. </small>
+ <small> You must stake at least <span id='nodeclaimamount'>...</span> CHEESE for a "wheel".)</small>
  <br>
  
  <br>
@@ -206,7 +207,7 @@ Faucet-Pool Balances: <a href='https://wax.bloks.io/account/cheesefaucet' target
 </div>
 
   
-<div style='float:right;margin-right:20px;'><small>V.0.0.5</small></div>
+<div style='float:right;margin-right:20px;'><small>V.0.0.6</small></div>
 <br>
 <br>
 <br> 
@@ -510,17 +511,27 @@ console.log( value );
                 
 freeclaim = value.rows[0].freeclaim;
 
-
-freeclaimformat = freeclaim;
-var freeclaimformat = freeclaim / 10000;
+var freeclaimformat = freeclaim;
+freeclaimformat = freeclaim / 10000;
 globalfreeclaim = freeclaimformat;
 
 freeclaimformat = Number(freeclaimformat).toFixed(4) + "";   
 
-
-// 
-
 document.getElementById('freeclaimamount').innerHTML = freeclaimformat;
+
+
+
+// nodeclaimamount
+cheesenode = value.rows[0].cheesenode;
+
+var nodeclaimformat = cheesenode;
+freeclaimformat = cheesenode / 10000;
+globalnodeclaim = freeclaimformat;
+
+freeclaimformat = Number(freeclaimformat).toFixed(4) + "";   
+
+document.getElementById('nodeclaimamount').innerHTML = freeclaimformat;
+
 
 
 /*
@@ -811,7 +822,7 @@ plusnodes = value.rows[0].plusnodes;
 
 if (plusnodes != "")
    {
-   var percent = plusnodes * 10;
+   var percent = plusnodes * 1;
    document.getElementById('plusstatus').innerHTML = "VIP Bonus: " + percent + "%";
    } else
      {
