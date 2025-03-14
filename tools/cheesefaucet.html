@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="img/icon.png?t=34" />
-<link rel="stylesheet" href="css/style.css?ttd=4434244" />
+<link rel="stylesheet" href="css/style.css?ttd=4244" />
 
  <!-- BEGINN WALLET-INCLUDE-->
     
@@ -154,10 +154,10 @@
 
  <br>
  <span onclick='unstakecheesenow()' style='' class='stakebutton'>&nbsp; Unstake ** &nbsp;</span> &nbsp;&nbsp;&nbsp;
- <span onclick='refundcheesenow()' style='' class='stakebutton'>&nbsp; Refund &nbsp;</span> 
+ <span onclick='refundcheesenow()'   id='refundbutton' class='graybutton' style=''>&nbsp; Refund &nbsp;</span> 
  <small><span id='unstakingcounter'></span></small> 
 
- <br>
+ <br>refundbutton
  <br>
  
  
@@ -240,7 +240,7 @@ Faucet-Pool Balances: <a href='https://wax.bloks.io/account/cheesefaucet' target
 </div>
 
   
-<div style='float:right;margin-right:20px;'><small>V.0.0.7</small></div>
+<div style='float:right;margin-right:20px;'><small>V.0.0.8</small></div>
 <br>
 <br>
 <br> 
@@ -700,6 +700,14 @@ if (restcnt > 0 && unstaketime > 0)
      unstakingactive = 0;
      } 
 
+if (restcnt < 0 && unstaketime > 0)
+   {
+   document.getElementById('unstakingcounter').innerHTML = " Refund is possible NOW";
+   // make button alive 
+   document.getElementById('refundbutton').className = "stakebutton";
+     
+   
+   }
 
 
 /*
